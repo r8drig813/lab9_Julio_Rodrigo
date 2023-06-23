@@ -28,7 +28,7 @@ public class PostServlet extends HttpServlet {
                 post.setTitle(req.getParameter("titulo"));
                 post.setContent(req.getParameter("contenido"));
                 post.setEmployeeId(Integer.parseInt(req.getParameter("idEmpleado")));
-                
+
 
 
 

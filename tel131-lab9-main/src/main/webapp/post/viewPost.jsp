@@ -33,6 +33,9 @@
             <li class="list-group-item"><%=c.getComment() + " - " + c.getDatetime().toString()%></li>
             <%}%>
         </ul>
+        <%if(userSession.getEmployeeId()==0){%>
+
+        <%}else{%>
         <div class="card-body">
             <form method="post" action="<%=request.getContextPath()%>/PostServlet?action=comment">
                 <div class="input-group mb-3">
@@ -44,6 +47,7 @@
                 </div>
             </form>
         </div>
+            <%}%>
     </div>
     <jsp:include page="../includes/footer.jsp"/>
 </div>
