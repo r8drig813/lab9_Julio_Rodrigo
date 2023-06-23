@@ -59,8 +59,35 @@ public class PostDao extends DaoBase{
 
     public Post savePost(Post post) {
 
+
         return post;
     }
+
+    public void newPost (Post post) throws SQLException{
+
+        String sql = "insert into post (title,content,employee_id,datetime) \n" +
+                "values (?,?,?,current_date());";
+
+        try (Connection conn = this.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql);) {
+             setPostParams(pstmt, post);
+             pstmt.executeUpdate();
+        }
+
+    }
+
+    private void setPostParams (PreparedStatement pstmt, Post post) throws SQLException{
+
+        pstmt.setString(1,post.getTitle());
+        pstmt.setString(2,post.getContent());
+        pstmt.setInt(3,post.getEmployeeId());
+
+
+
+        //pstmt.setInt(7,usuarios.getIdEstatus());
+
+    }
+
 
     private void fetchPostData(Post post, ResultSet rs) throws SQLException {
         post.setPostId(rs.getInt(1));

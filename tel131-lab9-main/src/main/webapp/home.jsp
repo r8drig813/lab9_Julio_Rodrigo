@@ -23,7 +23,7 @@
         <%if(userSession.getEmployeeId()==0){%>
 
         <%}else{%>
-        
+
         <div class="col-md-5 col-lg-4 ms-auto my-auto text-md-end">
             <a href="<%= request.getContextPath()%>/PostServlet?action=new" class="btn btn-primary">New Post</a>
         </div>

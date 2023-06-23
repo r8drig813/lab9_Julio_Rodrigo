@@ -4,7 +4,8 @@
 <jsp:useBean id="post" type="pe.edu.pucp.tel131lab9.bean.Post" scope="request"/>
 <jsp:useBean id="comments" type="java.util.ArrayList<pe.edu.pucp.tel131lab9.bean.Comment>" scope="request"/>
 <jsp:useBean id="comment" scope="request" type="java.lang.String" class="java.lang.String"/>
-
+<jsp:useBean id="userSession" scope="session" type="pe.edu.pucp.tel131lab9.dto.EmployeeDto"
+             class="pe.edu.pucp.tel131lab9.dto.EmployeeDto"/>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>

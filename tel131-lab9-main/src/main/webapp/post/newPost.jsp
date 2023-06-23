@@ -1,7 +1,8 @@
 <%@page import="java.util.ArrayList" %>
 <%@ page import="pe.edu.pucp.tel131lab9.bean.Post" %>
-<jsp:useBean id="posts" type="java.util.ArrayList<pe.edu.pucp.tel131lab9.bean.Post>" scope="request"/>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
+<jsp:useBean id="userSession" scope="session" type="pe.edu.pucp.tel131lab9.dto.EmployeeDto"
+             class="pe.edu.pucp.tel131lab9.dto.EmployeeDto"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,23 +19,26 @@
         <div class="col-md-7">
             <h1>New Post</h1>
         </div>
-        <div class="col-md-5 col-lg-4 ms-auto my-auto text-md-end">
-            <a href="<%= request.getContextPath()%>/PostServlet?action=new" class="btn btn-primary">New Post</a>
-        </div>
     </div>
     <div class="row">
-        <%for (Post p : posts) {%>
-        <div class="col-sm-4 py-3">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title"><%= p.getTitle()%></h5>
-                    <h6 class="card-subtitle mb-2 text-muted"><%= p.getEmployeeId()%></h6>
-                    <p class="card-text"><%= p.getContent()%></p>
-                    <a href="#" class="btn btn-primary">View</a>
-                </div>
+        <form method="post" action="<%=request.getContextPath()%>/PostServlet?action=guardar">
+
+            <input type="hidden" class="form-control" name="idEmpleado" id="idEmpleado"
+                    value="<%=userSession.getEmployeeId()%>">
+            <div class="col-12">
+                <label for="titulo" class="form-label">Title</label>
+                <input type="text" name="titulo" class="form-control" id="titulo" required>
+                <div class="invalid-feedback">Por favor ingrese su nombre!</div>
             </div>
-        </div>
-        <%}%>
+            <div class="col-12">
+                <label for="contenido" class="form-label">Comment</label>
+                <input type="text" name="contenido" class="form-control" id="contenido" required>
+                <div class="invalid-feedback">Por favor ingrese su nombre!</div>
+            </div>
+            <br>
+            <a class="btn btn-danger" href="<%=request.getContextPath()%>/HomeServlet">Cancelar</a>
+            <button type="submit" class="btn btn-primary" href="<%=request.getContextPath()%>/HomeServlet" >Guardar</button>
+        </form>
     </div>
     <jsp:include page="../includes/footer.jsp"/>
 </div>
