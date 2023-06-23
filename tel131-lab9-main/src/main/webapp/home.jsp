@@ -1,6 +1,8 @@
 <%@page import="java.util.ArrayList" %>
 <%@ page import="pe.edu.pucp.tel131lab9.bean.Post" %>
 <jsp:useBean id="posts" type="java.util.ArrayList<pe.edu.pucp.tel131lab9.bean.Post>" scope="request"/>
+<jsp:useBean id="userSession" scope="session" type="pe.edu.pucp.tel131lab9.dto.EmployeeDto"
+             class="pe.edu.pucp.tel131lab9.dto.EmployeeDto"/>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -18,9 +20,18 @@
         <div class="col-md-7">
             <h1>Home</h1>
         </div>
+        <%if(userSession.getEmployeeId()==0){%>
+
+        <%}else{%>
+        
         <div class="col-md-5 col-lg-4 ms-auto my-auto text-md-end">
             <a href="<%= request.getContextPath()%>/PostServlet?action=new" class="btn btn-primary">New Post</a>
         </div>
+
+
+        <%}%>
+
+
     </div>
     <div class="row">
         <%for (Post p : posts) {%>

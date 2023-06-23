@@ -95,6 +95,9 @@ public class EmployeeServlet extends HttpServlet {
                     response.sendRedirect("EmployeeServlet?err=Error al borrar el empleado");
                 }
                 break;
+            case "buscar":
+
+                break;
             default:
                 response.sendRedirect("EmployeeServlet");
         }
